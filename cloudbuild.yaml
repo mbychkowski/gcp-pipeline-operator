@@ -43,13 +43,17 @@ steps:
       ls deploy
       cd gcp-pipeline-operator-hydrated
       
-      git config --global user.email "mbychkowski@google.com"
+      git config --global user.email "admin@mbychkowski.altostrat.com"
       git config --global user.name "Michael Bychkowski"
       git config --global pull.rebase true
       
       git checkout main
       git pull origin main
+
+      pwd
+      ls ../deploy
       mv ../deploy/* ../gcp-pipeline-operator-hydrated/deploy/*
+      ls ../gcp-pipeline-operator-hydrated/deploy/
       
       git add .
       git status
