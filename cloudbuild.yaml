@@ -14,7 +14,7 @@ steps:
 - id: 'kustomize-build'
   name: 'gcr.io/cloud-builders/kubectl'
   dir: /workspace
-  args: ['apply', '-k' 'build', distribution, '-o', deploy/sync.yaml]
+  args: ['apply', '-k' 'build', distribution, '-o', 'deploy/sync.yaml']
 
 - id: 'clone-source-repo'
 - name: 'gcr.io/cloud-builders/gcloud'
@@ -30,7 +30,9 @@ steps:
   args: 
   - '-c'
   - | 
-      cd gcp-pipeline-operator-hydrated      
+      mv deploy/* gcp-pipeline-operator-hydrated/deploy/
+      cd gcp-pipeline-operator-hydrated
+      ls -la
       git config --global user.name "Michael Bychkowski"
       git config --global user.email "mbychkowski@google.com"
       git add -A
