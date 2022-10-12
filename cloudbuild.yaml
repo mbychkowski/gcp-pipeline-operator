@@ -2,7 +2,7 @@ steps:
 - id: 'git-repo-status'
   name: 'alpine'
   entrypoint: 'sh'
-  dir: /workspace/wet-repo
+  dir: /workspace/dry-repo
   args: 
   - '-c'
   - | 
@@ -11,8 +11,9 @@ steps:
       echo "$TAG_NAME"
       echo "***********************"
 
-      pwd
-      mkdir ../deploy
+      mkdir ../wet
+      ls ../
+      ls
 
 # - id: 'configure-gke'
 #   name: 'gcr.io/cloud-builders/gcloud'
@@ -22,7 +23,7 @@ steps:
 - id: 'kustomize-build'
   name: 'gcr.io/cloud-builders/kubectl'
   dir: /workspace
-  args: ['kustomize', 'distribution', '-o', 'deploy/sync.yaml']
+  args: ['kustomize', 'distribution', '-o', 'wet/sync.yaml']
   env:
   - CLOUDSDK_COMPUTE_REGION=us-central1-c
   - CLOUDSDK_COMPUTE_ZONE=us-central1-c
@@ -52,10 +53,13 @@ steps:
       git pull origin main
 
       pwd
-      echo 'ls ../deploy'
-      ls ../deploy
+      
+      echo 'ls ../wet'
+      ls ../wet
+      
       echo 'mv...'
-      mv ../deploy/* deploy/
+      mv ../wet/* deploy/
+      
       echo 'ls deploy/'
       ls deploy/
       
