@@ -28,12 +28,10 @@ steps:
   - CLOUDSDK_CONTAINER_CLUSTER=argocd-cluster
 
 - id: 'gcloud-source-repo'
-  name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: 'sh'
+  name: 'gcr.io/google.com/cloudsdktool/google-cloud-cli'
+  entrypoint: 'gcloud'
   dir: /workspace
-  args: 
-  - | 
-      gcloud source repos clone gcp-pipeline-operator-hydrated --project=mbychkowski-lab
+  args: ['source', 'repos', 'clone', 'gcp-pipeline-operator-hydrated', '--project=mbychkowski-lab']
 
 - id: 'git-push'
   name: 'alpine/git'
