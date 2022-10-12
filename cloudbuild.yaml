@@ -40,10 +40,15 @@ steps:
   args: 
   - '-c'
   - | 
-      ls -la
+      ls deploy
+      ls gcp-pipeline-operator-hydrated/deploy
       mv deploy/* gcp-pipeline-operator-hydrated/deploy/*
       cd gcp-pipeline-operator-hydrated
+      
+      git config --global user.email "mbychkowski@google.com"
+      git config --global user.name "Michael Bychkowski"
       git pull origin main
-      git add -A
+      git add .
+      git status
       git commit -m "Hydrate kustomize files"
       git push origin main
