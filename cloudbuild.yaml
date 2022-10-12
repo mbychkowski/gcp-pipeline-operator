@@ -14,7 +14,7 @@ steps:
 - id: 'kustomize-build'
   name: 'gcr.io/cloud-builders/kubectl'
   dir: /workspace
-  args: ['apply', '-k' 'build', 'distribution', '-o', 'deploy/sync.yaml']
+  args: ['apply', '-k', 'build', 'distribution', '-o', 'deploy/sync.yaml']
 
 - id: 'clone-source-repo'
 - name: 'gcr.io/cloud-builders/gcloud'
