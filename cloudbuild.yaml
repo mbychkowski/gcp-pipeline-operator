@@ -40,11 +40,9 @@ steps:
   args: 
   - '-c'
   - | 
-      mv deploy/* gcp-pipeline-operator-hydrated/deploy/
-      cd gcp-pipeline-operator-hydrated
       ls -la
-      git config --global user.name "Michael Bychkowski"
-      git config --global user.email "mbychkowski@google.com"
+      mv deploy/* gcp-pipeline-operator-hydrated/deploy/*
+      cd gcp-pipeline-operator-hydrated
       git pull origin main
       git add -A
       git commit -m "Hydrate kustomize files"
