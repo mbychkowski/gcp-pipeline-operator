@@ -8,16 +8,16 @@ steps:
   - | 
       echo "***********************"
       echo "$REPO_NAME"
-      echo "$BRANCH_NAME"
+      echo "$TAG_NAME"
       echo "***********************"
   
 - id: 'kustomize-build'
-  name: 'docker.io/lyft/kustomizer:v3.3.0'
+  name: 'gcr.io/cloud-builders/kubectl'
   dir: /workspace
-  args: ['kustomize', 'build', distribution, '-o', deploy/sync.yaml]
+  args: ['apply', '-k' 'build', distribution, '-o', deploy/sync.yaml]
 
-- id: 'kustomize-build'
-  name: 'docker.io/lyft/kustomizer:v3.3.0'
+- id: 'clone-source-repo'
+  name: 'gcloud'
   dir: /workspace
   args: 
   - '-c'
@@ -36,6 +36,6 @@ steps:
       git config --global user.name "Michael Bychkowski"
       git config --global user.email "mbychkowski@google.com"
       git add -A
-      git commit -m "Hydrated kustomize files"
+      git commit -m "Hydrate kustomize files"
       git branch -M main
       git push -u origin main
