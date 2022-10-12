@@ -11,10 +11,10 @@ steps:
       echo "$TAG_NAME"
       echo "***********************"
 
-- id: 'configure-gke'
-  name: 'gcr.io/cloud-builders/gcloud'
-  dir: /workspace
-  args: ['container', 'clusters', 'get-credentials', 'argocd-cluster', '--zone', 'us-central1-c', '--project', 'mbychkowski-lab']
+# - id: 'configure-gke'
+#   name: 'gcr.io/cloud-builders/gcloud'
+#   dir: /workspace
+#   args: ['container', 'clusters', 'get-credentials', 'argocd-cluster', '--zone', 'us-central1-c', '--project', 'mbychkowski-lab']
 
 - id: 'kustomize-build'
   name: 'gcr.io/cloud-builders/kubectl'
