@@ -34,20 +34,22 @@ steps:
   args: ['source', 'repos', 'clone', 'gcp-pipeline-operator-hydrated', '--project=mbychkowski-lab']
 
 - id: 'git-push'
-  name: 'alpine/git'
+  name: 'https://gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'sh'
   dir: /workspace
   args: 
   - '-c'
   - | 
       ls deploy
-      ls gcp-pipeline-operator-hydrated/deploy
-      mv deploy/* gcp-pipeline-operator-hydrated/deploy/*
       cd gcp-pipeline-operator-hydrated
       
       git config --global user.email "mbychkowski@google.com"
       git config --global user.name "Michael Bychkowski"
+      
       git pull origin main
+      mv deploy/* gcp-pipeline-operator-hydrated/deploy/*
+      ls -la
+      
       git add .
       git status
       git commit -m "Hydrate kustomize files"
