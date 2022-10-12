@@ -12,13 +12,6 @@ steps:
       echo "***********************"
 
       mkdir ../wet
-      ls ../
-      ls
-
-# - id: 'configure-gke'
-#   name: 'gcr.io/cloud-builders/gcloud'
-#   dir: /workspace
-#   args: ['container', 'clusters', 'get-credentials', 'argocd-cluster', '--zone', 'us-central1-c', '--project', 'mbychkowski-lab']
 
 - id: 'kustomize-build'
   name: 'gcr.io/cloud-builders/kubectl'
@@ -42,7 +35,6 @@ steps:
   args: 
   - '-c'
   - | 
-      ls deploy
       cd gcp-pipeline-operator-hydrated
       
       git config --global user.email "admin@mbychkowski.altostrat.com"
@@ -51,17 +43,9 @@ steps:
       
       git checkout main
       git pull origin main
-
-      pwd
       
-      echo 'ls ../wet'
-      ls ../wet
-      
-      echo 'mv...'
+      echo 'moving file to repo...'
       mv ../wet/* deploy/
-      
-      echo 'ls deploy/'
-      ls deploy/
       
       git add .
       git status
