@@ -45,10 +45,11 @@ steps:
       
       git config --global user.email "mbychkowski@google.com"
       git config --global user.name "Michael Bychkowski"
+      git config --global pull.rebase true
       
+      git checkout main
       git pull origin main
       mv ../deploy/* ../gcp-pipeline-operator-hydrated/deploy/*
-      ls -la
       
       git add .
       git status
