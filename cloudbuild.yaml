@@ -10,7 +10,7 @@ steps:
       echo "$REPO_NAME"
       echo "$TAG_NAME"
       echo "***********************"
-      
+
       mkdir deploy
 
 # - id: 'configure-gke'
@@ -32,7 +32,7 @@ steps:
   dir: /workspace
   args: 
   - | 
-      init && source repos clone gcp-pipeline-operator-hydrated --project=mbychkowski-lab
+      init && gcloud source repos clone gcp-pipeline-operator-hydrated --project=mbychkowski-lab
 
 - id: 'git-push'
   name: 'alpine/git'
