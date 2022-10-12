@@ -33,7 +33,6 @@ steps:
   dir: /workspace
   args: 
   - | 
-      gcloud init
       gcloud source repos clone gcp-pipeline-operator-hydrated --project=mbychkowski-lab
 
 - id: 'git-push'
