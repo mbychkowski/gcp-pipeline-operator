@@ -21,7 +21,7 @@ steps:
   dir: /workspace
   args: ['apply', '-k', 'build', 'distribution', '-o', 'deploy/sync.yaml']
   env:
-  - CLOUDSDK_COMPUTE_REGION=us-central1
+  - CLOUDSDK_COMPUTE_REGION=us-central1-c
   - CLOUDSDK_COMPUTE_ZONE=us-central1-c
   - CLOUDSDK_CONTAINER_CLUSTER=argocd-cluster
 
