@@ -2,7 +2,7 @@ steps:
 - id: 'git-repo-status'
   name: 'alpine'
   entrypoint: 'sh'
-  dir: /workspace
+  dir: /workspace/wet-repo
   args: 
   - '-c'
   - | 
@@ -11,7 +11,8 @@ steps:
       echo "$TAG_NAME"
       echo "***********************"
 
-      mkdir deploy
+      pwd
+      mkdir ../deploy
 
 # - id: 'configure-gke'
 #   name: 'gcr.io/cloud-builders/gcloud'
@@ -51,9 +52,12 @@ steps:
       git pull origin main
 
       pwd
+      echo 'ls ../deploy'
       ls ../deploy
-      mv ../deploy/* ../gcp-pipeline-operator-hydrated/deploy/*
-      ls ../gcp-pipeline-operator-hydrated/deploy/
+      echo 'mv...'
+      mv ../deploy/* deploy/
+      echo 'ls deploy/'
+      ls deploy/
       
       git add .
       git status
