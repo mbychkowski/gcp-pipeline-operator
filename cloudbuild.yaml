@@ -17,7 +17,7 @@ steps:
   args: ['apply', '-k', 'build', 'distribution', '-o', 'deploy/sync.yaml']
 
 - id: 'clone-source-repo'
-- name: 'gcr.io/cloud-builders/gcloud'
+  name: 'gcr.io/cloud-builders/gcloud'
   dir: /workspace
   args: 
   - | 
