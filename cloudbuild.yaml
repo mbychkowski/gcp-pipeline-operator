@@ -34,7 +34,7 @@ steps:
   args: ['source', 'repos', 'clone', 'gcp-pipeline-operator-hydrated', '--project=mbychkowski-lab']
 
 - id: 'git-push'
-  name: 'https://gcr.io/google.com/cloudsdktool/cloud-sdk'
+  name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'sh'
   dir: /workspace
   args: 
@@ -47,7 +47,7 @@ steps:
       git config --global user.name "Michael Bychkowski"
       
       git pull origin main
-      mv deploy/* gcp-pipeline-operator-hydrated/deploy/*
+      mv ../deploy/* ../gcp-pipeline-operator-hydrated/deploy/*
       ls -la
       
       git add .
