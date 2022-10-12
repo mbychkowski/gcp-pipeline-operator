@@ -3,5 +3,5 @@ kind: Kustomization
 
 resources:
 ## setup
-- configsync/overlays/source-repo
+# - configsync/overlays/source-repo
 - nginx

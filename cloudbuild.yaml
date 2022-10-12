@@ -16,6 +16,15 @@ steps:
   dir: /workspace
   args: ['kustomize', 'build', distribution, '-o', deploy/sync.yaml]
 
+- id: 'kustomize-build'
+  name: 'docker.io/lyft/kustomizer:v3.3.0'
+  dir: /workspace
+  args: 
+  - '-c'
+  - | 
+      gcloud init
+      gcloud source repos clone gcp-pipeline-operator-hydrated --project=mbychkowski-lab
+
 - id: 'git-push'
   name: 'alpine/git'
   entrypoint: 'sh'
@@ -23,27 +32,10 @@ steps:
   args: 
   - '-c'
   - | 
+      cd gcp-pipeline-operator-hydrated      
       git config --global user.name "Michael Bychkowski"
       git config --global user.email "mbychkowski@google.com"
-      git remote set-url origin https://$$GITOPS_DEPLOY_GH_USERNAME:$$GITOPS_DEPLOY_GH_TOKEN@github.com/mbychkowski/gcp-config-controller-source.git
-
       git add -A
-      git commit -m "Kustomize build config sync declarative state"
+      git commit -m "Hydrated kustomize files"
       git branch -M main
       git push -u origin main
-  secretEnv: ['GITOPS_DEPLOY_GH_TOKEN', 'GITOPS_DEPLOY_GH_USERNAME']
-
-# - id: 'Git clone deploy repo'
-#   name: 'alpine/git'
-#   entrypoint: 'sh'
-#   dir: /workspace
-#   args: 
-#   - '-c'
-#   - | 
-
-availableSecrets:
-  secretManager:
-    - versionName: projects/${PROJECT_ID}/secrets/GITOPS_DEPLOY_GH_TOKEN/versions/latest
-      env: GITOPS_DEPLOY_GH_TOKEN
-    - versionName: projects/${PROJECT_ID}/secrets/GITOPS_DEPLOY_GH_USERNAME/versions/latest
-      env: GITOPS_DEPLOY_GH_USERNAME      
