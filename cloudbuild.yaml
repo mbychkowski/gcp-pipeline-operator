@@ -27,12 +27,13 @@ steps:
   - CLOUDSDK_COMPUTE_ZONE=us-central1-c
   - CLOUDSDK_CONTAINER_CLUSTER=argocd-cluster
 
-- id: 'gcloud-init'
-  name: 'gcr.io/cloud-builders/gcloud'
+- id: 'gcloud-source-repo'
+  name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   dir: /workspace
   args: 
   - | 
-      source repos clone gcp-pipeline-operator-hydrated --project=mbychkowski-lab
+      gcloud init
+      gcloud source repos clone gcp-pipeline-operator-hydrated --project=mbychkowski-lab
 
 - id: 'git-push'
   name: 'alpine/git'
