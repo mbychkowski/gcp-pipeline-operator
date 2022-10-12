@@ -29,6 +29,7 @@ steps:
 
 - id: 'gcloud-source-repo'
   name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: 'sh'
   dir: /workspace
   args: 
   - | 
