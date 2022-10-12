@@ -17,13 +17,11 @@ steps:
   args: ['apply', '-k' 'build', distribution, '-o', deploy/sync.yaml]
 
 - id: 'clone-source-repo'
-  name: 'gcloud'
+- name: 'gcr.io/cloud-builders/gcloud'
   dir: /workspace
   args: 
-  - '-c'
   - | 
-      gcloud init
-      gcloud source repos clone gcp-pipeline-operator-hydrated --project=mbychkowski-lab
+      init && source repos clone gcp-pipeline-operator-hydrated --project=mbychkowski-lab
 
 - id: 'git-push'
   name: 'alpine/git'
