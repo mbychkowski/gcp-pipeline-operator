@@ -1,0 +1,14 @@
+# root-sync.yaml
+apiVersion: configsync.gke.io/v1beta1
+kind: RootSync
+metadata:
+  name: root-sync
+  namespace: config-management-system
+spec:
+  sourceFormat: unstructured
+  git:
+    repo: https://source.developers.google.com/p/mbychkowski-lab/r/gcp-pipeline-operator-hydrated
+    branch: main
+    dir: deploy
+    auth: gcpserviceaccount
+    gcpServiceAccountEmail: config-sync-sa@mbychkowski-lab.iam.gserviceaccount.com

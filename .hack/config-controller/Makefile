@@ -22,7 +22,6 @@ cc-vpc:
 		--description="Subnet to securely access the test cluster control plane" \
 		--enable-flow-logs \
 		--enable-private-ip-google-access \
-		--purpose=PRIVATE \
 		--region=${CONFIG_CONTROLLER_LOCATION}	
 	# Firewall Rules
 	@gcloud compute firewall-rules create allow-internal --network=projects/${CONFIG_CONTROLLER_PROJECT_ID}/global/networks/${CONFIG_CONTROLLER_NETWORK}-vpc \
@@ -49,7 +48,6 @@ cc-config-controller:
 		--project=${CONFIG_CONTROLLER_PROJECT_ID} \
 		--master-ipv4-cidr-block=172.16.0.0/28 \
 		--man-block ${LOCAL_IP_ADDRESS_ADMIN_JUMPBOX}/24 \
-		--use-private-endpoint
 
 cc-admin-vm: admin-vm-sa
 	@gcloud beta compute instances create cc-admin \

@@ -1,0 +1,15 @@
+export BILLING_ACCOUNT_ID=019C42-BDA7E5-0365C4
+export ORG_OR_FOLDER_ID=255059413779
+export AUTHORIZED_GCP_IP_ADDRESS=35.233.207.90
+export GH_EMAIL=mbychkowski@google.com
+export CONFIG_CONTROLLER_PROJECT_ID=mbychkowski-lab
+export CONFIG_CONTROLLER_PROJECT_NUMBER=416711223978
+export CONFIG_CONTROLLER_NAME=configcontroller
+export CONFIG_CONTROLLER_LOCATION=us-east1
+export CONFIG_CONTROLLER_NETWORK=cc-admin
+export CONFIG_CONTROLLER_SA=service-416711223978@gcp-sa-yakima.iam.gserviceaccount.com
+export ACCESS_TOKEN_FILE=/usr/local/google/home/mbychkowski/code/gcp-pipeline-operator/access-token-file.txt
+export LOCAL_IP_ADDRESS_CONFIG_CONTROLLER=10.0.0.0
+export LOCAL_IP_ADDRESS_ADMIN_JUMPBOX=10.0.1.0
+export VPC_NATIVE_IP_ADDRESS_POD=172.16.0.0
+export VPC_NATIVE_IP_ADDRESS_SVC=192.168.64.0

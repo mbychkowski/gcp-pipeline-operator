@@ -1,6 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: demo-nginx
 
 resources:
-- deploy.yaml
-- svc.yaml
+- base/ns.yaml
+- base/deploy.yaml
+- base/svc.yaml
