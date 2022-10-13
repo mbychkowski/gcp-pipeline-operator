@@ -1,0 +1,57 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedResources
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"constraints.gatekeeper.sh/v1beta1","kind":"K8sAllowedResources","metadata":{"annotations":{},"name":"block-workloads"},"spec":{"parameters":{"allowedKinds":[{"apiGroups":["*"],"kinds":["*"]}],"forbiddenKinds":[{"apiGroups":[""],"kinds":["Pod"]},{"apiGroups":["apps"],"kinds":["DaemonSet","Deployment","ReplicaSet","StatefulSet"]}],"forceRestrictedUsers":["system:serviceaccount:config-management-system:syncer"],"usernameExemption":{"prefixes":["system:"],"suffixes":["@gcp-sa-test-krmapihosting.iam.gserviceaccount.com","@gcp-sa-krmapihosting.iam.gserviceaccount.com","@gcp-sa-staging-krmapihosting.iam.gserviceaccount.com","@container-engine-robot-test.iam.gserviceaccount.com","@container-engine-robot.iam.gserviceaccount.com","@gcp-sa-test-krmapihosting-acp.iam.gserviceaccount.com","@gcp-sa-staging-krmapihosting-d.iam.gserviceaccount.com","@gcp-sa-krmapihosting-dataplane.iam.gserviceaccount.com","@gcp-sa-test-saasmanagement.iam.gserviceaccount.com","@gcp-sa-staging-saasmanagement.iam.gserviceaccount.com","@gcp-sa-saasmanagement.iam.gserviceaccount.com","@gcp-sa-test-config-controller.gserviceaccount.com","@gcp-sa-staging-config-controller.iam.gserviceaccount.com","@gcp-sa-config-controller.iam.gserviceaccount.com","@gcp-sa-ktd-control.iam.gserviceaccount.com","@gcp-sa-staging-ktd-control.iam.gserviceaccount.com"],"users":["admin","kubelet","kubelet-bootstrap","cluster-autoscaler"]}}}}
+  creationTimestamp: "2022-10-12T21:20:22Z"
+  generation: 5
+  name: block-workloads
+  resourceVersion: "515327"
+  uid: 72fc0093-0cab-464e-ba0f-801c2a4f8620
+spec:
+  parameters:
+    allowedKinds:
+    - apiGroups:
+      - '*'
+      kinds:
+      - '*'
+    forbiddenKinds:
+    - apiGroups:
+      - ""
+      kinds:
+      - Pod
+    - apiGroups:
+      - apps
+      kinds:
+      - DaemonSet
+      - ReplicaSet
+      - StatefulSet
+    forceRestrictedUsers:
+    - system:serviceaccount:config-management-system:syncer
+    usernameExemption:
+      prefixes:
+      - 'system:'
+      suffixes:
+      - '@gcp-sa-test-krmapihosting.iam.gserviceaccount.com'
+      - '@gcp-sa-krmapihosting.iam.gserviceaccount.com'
+      - '@gcp-sa-staging-krmapihosting.iam.gserviceaccount.com'
+      - '@container-engine-robot-test.iam.gserviceaccount.com'
+      - '@container-engine-robot.iam.gserviceaccount.com'
+      - '@gcp-sa-test-krmapihosting-acp.iam.gserviceaccount.com'
+      - '@gcp-sa-staging-krmapihosting-d.iam.gserviceaccount.com'
+      - '@gcp-sa-krmapihosting-dataplane.iam.gserviceaccount.com'
+      - '@gcp-sa-test-saasmanagement.iam.gserviceaccount.com'
+      - '@gcp-sa-staging-saasmanagement.iam.gserviceaccount.com'
+      - '@gcp-sa-saasmanagement.iam.gserviceaccount.com'
+      - '@gcp-sa-test-config-controller.gserviceaccount.com'
+      - '@gcp-sa-staging-config-controller.iam.gserviceaccount.com'
+      - '@gcp-sa-config-controller.iam.gserviceaccount.com'
+      - '@gcp-sa-ktd-control.iam.gserviceaccount.com'
+      - '@gcp-sa-staging-ktd-control.iam.gserviceaccount.com'
+      - '@developer.gserviceaccount.com'
+      users:
+      - admin
+      - kubelet
+      - kubelet-bootstrap
+      - cluster-autoscaler
