@@ -57,5 +57,5 @@ steps:
   name: 'gcr.io/google.com/cloudsdktool/google-cloud-cli'
   entrypoint: 'gcloud'
   dir: /workspace/dry-repo/deploy
-  waitFor: ['run-buildpack']
+  waitFor: ['git-push']
   args: ['deploy', 'releases', 'gcp-pipeline-release-$TAG_NAME', '--project=mbychkowski-lab', '--region=us-central1', '--delivery-pipeline=my-gke-demo-app-1', '--images=my-app-image=us-central1-docker.pkg.dev/mbychkowski-lab/gcp-pipeline/echoserver:1.4']
