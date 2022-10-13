@@ -3,6 +3,6 @@
   metadata:
     annotations:
       cnrm.cloud.google.com/project-id: mbychkowski-lab
-    labels:
-      app:simple-go
+    # labels:
+    #   app:simple-go
     name: demo-topic
