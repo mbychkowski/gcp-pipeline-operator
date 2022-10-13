@@ -49,5 +49,5 @@ steps:
       
       git add .
       git status
-      git commit -m "Hydrate kustomize files"
+      git commit -m "Hydrate kubernets resources with $TAG_NAME build."
       git push origin main
