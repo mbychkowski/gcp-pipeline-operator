@@ -55,8 +55,13 @@ steps:
 # Deploy
 - id: 'deploy'
   name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: 'gcloud'
-  dir: /workspace/dry-repo/deploy
+  # entrypoint: 'gcloud'
+  dir: /workspace
   waitFor: ['git-push']
-  args: ['alpha', 'deploy', 'releases', 'create', 'gcp-pipeline-release-$TAG_NAME', '--project=mbychkowski-lab', '--region=us-central1', '--delivery-pipeline=my-gke-demo-app-1', '--images=my-app-image=my-app-image=us-central1-docker.pkg.dev/mbychkowski-lab/gcp-pipeline/simple-go']
+  args: 
+  - | 
+      pwd
+      ls
+      cd dry-repo/deploy
+      gcloud alpha deploy releases create gcp-pipeline-release-$TAG_NAME --project=mbychkowski-lab --region=us-central1 --delivery-pipeline=my-gke-demo-app-1 --images=my-app-image=my-app-image=us-central1-docker.pkg.dev/mbychkowski-lab/gcp-pipeline/simple-go
 # my-app-image=us-central1-docker.pkg.dev/mbychkowski-lab/gcp-pipeline/simple-go
