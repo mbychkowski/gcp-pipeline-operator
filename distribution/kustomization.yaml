@@ -6,4 +6,4 @@ resources:
 # - configsync/overlays/source-repo
 - nginx
 - opa
-- cloud/pubsub
+- cloud/pubsub/overlays/dev/
