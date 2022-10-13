@@ -4,6 +4,5 @@ kind: Kustomization
 resources:
 ## setup
 # - configsync/overlays/source-repo
-- nginx
-- opa
-- cloud/pubsub/overlays/dev
+- ../../base/service.yaml
+- instance.yaml
