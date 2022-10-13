@@ -5,4 +5,4 @@ resources:
 ## setup
 # - configsync/overlays/source-repo
 - ../../base/service.yaml
-- instance.yaml
+- topic.yaml
